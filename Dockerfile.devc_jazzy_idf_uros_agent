@@ -1,0 +1,86 @@
+# # # # # # # # # INSTALACIÓN DE CONTAINER BASE DE ROS2 # # # # # # # # # # # #
+
+#Tomamos de imagen base la imagen de ROS2 Jazzy Jalisco
+FROM ros:jazzy-ros-base-noble
+
+ENV ROS_DISTRO=jazzy
+
+SHELL ["/bin/bash", "-c"]
+
+
+
+# # # # # # # # # # # INSTALACIÓN DE ESP-IDF # # # # # # # # # # # # # #
+
+# Instalación de herramientas esenciales para la instalación de los framworks
+RUN apt-get update -y && apt-get install --no-install-recommends -y \
+    git \
+    wget \
+    flex \
+    bison \
+    gperf \
+    python3 \
+    python3-pip \
+    python3-venv \
+    cmake \
+    ninja-build \
+    ccache \
+    libffi-dev \
+    libssl-dev \
+    dfu-util \
+    libusb-1.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalación de IDF
+WORKDIR /opt/esp
+RUN git clone -b release/v5.2 --recursive https://github.com/espressif/esp-idf.git idf
+WORKDIR /opt/esp/idf
+RUN /opt/esp/idf/install.sh esp32,esp32s3
+
+# Instalación de algunos paquetes para trabajar con el componente de Microros de IDF:
+# TODO: Pasar a script para command post-build
+# RUN . /opt/esp/idf/export.sh && pip3 install catkin_pkg lark-parser colcon-common-extensions
+
+# # # # # # # # # # #   INSTALACIÓN DEL ROS2 DRIVER DE UNIVERSAL ROBOTS   # # # # # # # # # # # # # #
+
+# TODO: Pasar a script para command post-build
+RUN apt-get update -y && apt-get install ros-${ROS_DISTRO}-ur -y && rm -rf /var/lib/apt/lists/*
+
+
+
+
+
+# # # # # # # # # # # INSTALACIÓN DEl PAQUETE DE MICROROS # # # # # # # # # # # # # #
+
+# TODO: Pasar a script para command post-build
+#WORKDIR /root/microros_agent_ws
+#RUN . /opt/ros/$ROS_DISTRO/setup.bash && \
+#    git clone -b $ROS_DISTRO https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup && \
+#    apt-get update && rosdep update && \
+#    rosdep install --from-paths src --ignore-src -y
+
+# Install pip
+#RUN apt-get install python3-pip -y && rm -rf /var/lib/apt/lists/*
+
+# Build micro-ROS tools and source them
+#RUN . /opt/ros/$ROS_DISTRO/setup.bash && \
+#    colcon build && \
+#    . ./install/local_setup.bash && \
+#    ros2 run micro_ros_setup create_agent_ws.sh && \
+#    ros2 run micro_ros_setup build_agent.sh
+
+
+
+# # # # # # # # # # # PERSONALIZACIÓN DE ENTORNO # # # # # # # # # # # # # #
+
+# Instalación de herramientas para gustos personales
+RUN apt-get update -y && apt-get install --no-install-recommends -y \
+    tree \
+    nano \
+    dos2unix \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copiamos el script de configuración (alias, etc.)
+COPY ./setup_scripts/bash_aliases /root/.bash_aliases
+RUN dos2unix /root/.bash_aliases
+# COPY ./.devcontainer/setup_scripts/start_microros_agent.sh /root/scripts/start_microros_agent.sh
+# COPY ./.devcontainer/setup_scripts/start_ros_env.sh /root/scripts/start_ros_env.sh

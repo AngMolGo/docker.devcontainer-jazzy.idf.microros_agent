@@ -1,0 +1,25 @@
+{
+  "name": "devc_appName",
+  "dockerComposeFile": "./compose.yaml",
+  "service": "devc_appName",
+  "workspaceFolder": "/root",
+  "runServices": ["devc_appName"],
+  "shutdownAction": "stopCompose",
+  "overrideCommand": true,
+  "customizations": {
+    "vscode": {
+      "settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"idf.espIdfPath": "/opt/esp/idf",
+				"idf.toolsPath": "/root/.espressif",
+				"idf.gitPath": "/usr/bin/git"
+      },
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "espressif.esp-idf-extension"
+      ]
+    }
+  },
+  "privileged": true
+}

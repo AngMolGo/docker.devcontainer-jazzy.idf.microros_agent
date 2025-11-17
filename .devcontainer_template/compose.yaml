@@ -1,0 +1,50 @@
+# # # # # # # # # # # # #   COMPOSE FILE   # # # # # # # # # # # #
+
+services:
+
+  # # # # # # # # #   DEVCONTAINER   # # # # # # # # #
+  devc_appName: # Nombre del servicio
+    # Construcción del contenedor
+    build:
+      context: <dockerfile-path> # C:/Users/angel/Projects/.docker
+      dockerfile: Dockerfile.devc_jazzy_idf_uros_agent # No cambiar, la idea es utilizar la misma imagen para no compilar más.
+    image: devc_general:jazzy_idf_uros_agent
+
+    # Cómo se llamará el contenedor generado
+    container_name: devc_appName
+
+    # Mapea el workspace local dentro del contenedor
+    volumes:
+      - ../ros2_ws:/root/ros2_ws
+      - ../esp32_ws:/root/esp32_ws
+      - /dev:/dev
+
+    # Configuración de red del contenedor
+    # Para fines de la aplicación, la comunicación del contenedor de ROS2 se realizará internamente con una red privada.
+#    networks:
+#      devc_appName_redName:
+#        ipv4_address: 192.168.0.2
+
+    command: ["/bin/bash", "-il"]
+    tty: true
+    stdin_open: true
+
+  # ----------------------------------------------------------------
+
+
+
+
+  # # # # # # # # #   Configuración de Redes   # # # # # # # # # # # 
+
+#networks:
+  
+  # Red interna
+#  devc_appName_redName:
+#    driver: bridge # Tipo bridge
+#    ipam:
+#      config:
+#        - subnet: 192.168.0.0/24
+#          gateway: 192.168.0.1
+
+  
+  # *** La red de tipo host se define directamente en la configuración del servicio

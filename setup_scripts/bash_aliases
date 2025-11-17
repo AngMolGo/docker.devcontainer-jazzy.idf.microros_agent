@@ -1,0 +1,2 @@
+alias get-idf='. /opt/esp/idf/export.sh && [[ ! -z "$IDF_PATH" ]] && export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\e[36m\](IDF)\[\e[0m\]\$ "'
+alias get-ros2-jazzy='. /opt/ros/jazzy/setup.bash && [[ ! -z "$ROS_VERSION" ]] && export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\e[36m\](⠿⠇2)\[\e[0m\]\$ "'
