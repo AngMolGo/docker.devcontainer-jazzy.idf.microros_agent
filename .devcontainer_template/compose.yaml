@@ -3,7 +3,7 @@
 services:
 
   # # # # # # # # #   DEVCONTAINER   # # # # # # # # #
-  devc_appName: # Nombre del servicio
+  devc_<appName>: # Nombre del servicio
     # Construcción del contenedor
     build:
       context: <dockerfile-path> # C:/Users/angel/Projects/.docker
@@ -11,7 +11,7 @@ services:
     image: devc_general:jazzy_idf_uros_agent
 
     # Cómo se llamará el contenedor generado
-    container_name: devc_appName
+    container_name: devc_<appName>
 
     # Mapea el workspace local dentro del contenedor
     volumes:
@@ -22,7 +22,7 @@ services:
     # Configuración de red del contenedor
     # Para fines de la aplicación, la comunicación del contenedor de ROS2 se realizará internamente con una red privada.
 #    networks:
-#      devc_appName_redName:
+#      devc_<appName>_redName:
 #        ipv4_address: 192.168.0.2
 
     command: ["/bin/bash", "-il"]
@@ -39,7 +39,7 @@ services:
 #networks:
   
   # Red interna
-#  devc_appName_redName:
+#  devc_<appName>_redName:
 #    driver: bridge # Tipo bridge
 #    ipam:
 #      config:

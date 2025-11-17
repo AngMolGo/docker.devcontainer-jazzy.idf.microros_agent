@@ -1,9 +1,9 @@
 {
-  "name": "devc_appName",
+  "name": "devc_<appName>",
   "dockerComposeFile": "./compose.yaml",
-  "service": "devc_appName",
+  "service": "devc_<appName>",
   "workspaceFolder": "/root",
-  "runServices": ["devc_appName"],
+  "runServices": ["devc_<appName>"],
   "shutdownAction": "stopCompose",
   "postCreateCommand": "./setup_scripts/<install_requirement_script>",
   "overrideCommand": true,
