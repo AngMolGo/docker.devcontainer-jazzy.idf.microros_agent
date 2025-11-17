@@ -1,5 +1,6 @@
 # docker.devcontainer-jazzy.idf.microros_agent
-Repositorio para almacenar dockerfile y un template de directorio .devcontainer, para desplegar un devcontainer para desarrollar aplicaciones de ROS2, ESP32 mediante IDF y su componente para desarrollar con microros.
+
+La idea de este repositorio es almacenar el dockerfile de la imagen de un contenedor con todos los frameworks necesarios para desarrollar robótica con ROS2 Jazzy y microros con el microcontrolador ESP32 con el IDF de Espressif.
 
 #### Requisitos:
 - [ ] Visual Studio Code
@@ -9,8 +10,6 @@ Repositorio para almacenar dockerfile y un template de directorio .devcontainer,
 ## Quick Start Guide
 
 ### Compilar imagen
-
-La idea de este repositorio es almacenar el dockerfile de la imagen de un contenedor con todos los frameworks necesarios para desarrollar robótica con ROS2 Jazzy y microros con el microcontrolador ESP32 con el IDF de Espressif.
 
 Este repositorio se puede clonar en la carpeta raíz del proyecto, en el home del usuario o en cualquier lugar donde se quiera conservar.
 
@@ -41,7 +40,7 @@ Al termino de la configuración, para inicializar el devcontainer se abre el dir
 code <workspace-path>
 ```
 
-Al momento de abrir el espacio de trabajo del proyecto, Visual Studio Code preguntará si se quiere reabrir el proyecto dentro del contenedor.
+Al momento de abrir el espacio de trabajo del proyecto, Visual Studio Code preguntará si se quiere reabrir el proyecto dentro del contenedor,o bien, presionando la tecla ```F1``` dentro de VSCode o ```ctrl+shift+P``` o en el menú desplegable  ```View > Command Palette...```
 
 > [!IMPORTANT]
-> Es muy importante realizar una correcta configuración de los archivos ```devcontainer.json``` y ```compose.yaml```, ya que estos determinarán el comportamiento, configuración y el comportamiento que tendrá el contenedor.
+> Es muy importante realizar una correcta configuración de los archivos ```devcontainer.json``` y ```compose.yaml```, ya que estos determinarán el funcionamiento, configuración y comportamiento que tendrá el contenedor.
