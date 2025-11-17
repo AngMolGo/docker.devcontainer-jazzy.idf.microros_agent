@@ -44,3 +44,13 @@ Al momento de abrir el espacio de trabajo del proyecto, Visual Studio Code pregu
 
 > [!IMPORTANT]
 > Es muy importante realizar una correcta configuración de los archivos ```devcontainer.json``` y ```compose.yaml```, ya que estos determinarán el funcionamiento, configuración y comportamiento que tendrá el contenedor.
+
+## Configuración ```postCreateCommand``` de paquetes y workspaces
+
+En la imagen fueron copiados scripts de instalación de diferentes paquetes de ROS2 e IDF, estos srcipts fueron copiados en el directorio ```/root/setup_scripts``` del contenedor. 
+
+Se recomienda usar el comando ```postCreateCommand``` en el archivo ```devcontainer.json``` para instalar los paquetes necesarios para el desarrollo de la aplicación en el momento de la creación del devcontainer.
+
+``` json
+"postCreateCommand": "./setup_scripts/<install_requirement_script>",
+```

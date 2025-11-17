@@ -5,6 +5,7 @@
   "workspaceFolder": "/root",
   "runServices": ["devc_appName"],
   "shutdownAction": "stopCompose",
+  "postCreateCommand": "./setup_scripts/<install_requirement_script>",
   "overrideCommand": true,
   "customizations": {
     "vscode": {
