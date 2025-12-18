@@ -70,4 +70,6 @@ RUN dos2unix /root/.setup_scripts/install_microros_idf_component_pip_packages.ba
 RUN dos2unix /root/.setup_scripts/install_ros_ur_driver.bash
 RUN dos2unix /root/.setup_scripts/install_microros_agent_ws.bash
 
+RUN chmod +x /root/.setup_scripts/*.bash
+
 WORKDIR /root

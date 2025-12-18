@@ -5,7 +5,7 @@
   "workspaceFolder": "/root",
   "runServices": ["devc_<appName>"],
   "shutdownAction": "stopCompose",
-  "postCreateCommand": "./setup_scripts/<install_requirement_script>",
+  "postCreateCommand": "/root/.setup_scripts/install_microros_idf_component_pip_packages.bash && /root/.setup_scripts/install_microros_agent_ws.bash && /root/.setup_scripts/install_ros_ur_driver.bash",
   "overrideCommand": true,
   "customizations": {
     "vscode": {
