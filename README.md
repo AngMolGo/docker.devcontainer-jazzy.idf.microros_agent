@@ -14,14 +14,14 @@ La idea de este repositorio es almacenar el dockerfile de la imagen de un conten
 Este repositorio se puede clonar en la carpeta raíz del proyecto, en el home del usuario o en cualquier lugar donde se quiera conservar.
 
 ``` bash
-git clone -b jazzy_idf-v5.2 https://github.com/AngMolGo/docker.devcontainer-jazzy.idf.microros_agent.git ~/projects/.docker/jazzy_idf
+export DOCKER_IMAGE_INSTALLING_PATH="$HOME/Projects/.docker/jazzy_idf"
+git clone -b jazzy_idf-v5.2 https://github.com/AngMolGo/docker.devcontainer-jazzy.idf.microros_agent.git $DOCKER_IMAGE_INSTALLING_PATH
 ```
 
 Para compilar el dockerfile:
 
 ```bash
-cd ~/projects/.docker/jazzy_idf
-docker build -f Dockerfile.devc_jazzy_idf_uros_agent -t devc_general:jazzy_idf_uros_agent .
+docker build -f $DOCKER_IMAGE_INSTALLING_PATH/Dockerfile.devc_jazzy_idf_uros_agent -t devc_general:jazzy_idf_uros_agent .
 ```
 
 ### Ejecución de DevContainer
@@ -29,7 +29,7 @@ docker build -f Dockerfile.devc_jazzy_idf_uros_agent -t devc_general:jazzy_idf_u
 Dentro del repositorio se encuentra una plantilla para un directorio ```.devcontainer``` con la configuración necesaria para inicializar un devcontainer, mediante el uso de un archivo ```devcontainer``` y un archivo ```compose.yaml```. Este directorio se debe de copiar en la raíz del workspace del proyecto y configurarse para poder ser utilizado con el proyecto a utilizar:
 
 ``` bash
-cp ./.devcontainer_template <workspace-path>/.devcontainer
+cp $DOCKER_IMAGE_INSTALLING_PATH/.devcontainer_template <workspace-path>/.devcontainer
 cd <workspace-path>
 code .devcontainer # Configurar archivos devcontainer.json y compose.yaml
 ```
